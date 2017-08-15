@@ -1,7 +1,7 @@
 {
-  "name": "heroku-cra-node",
+  "name": "my-food-pal",
   "version": "1.0.0",
-  "description": "How to use create-react-app with a custom Node API on Heroku",
+  "description": "Food logger",
   "engines": {
     "node": "6.11.x"
   },
@@ -11,14 +11,14 @@
   },
   "cacheDirectories": [
     "node_modules",
-    "react-ui/node_modules"
+    "client/node_modules"
   ],
   "dependencies": {
     "express": "^4.14.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mars/heroku-cra-node.git"
+    "url": "https://github.com/williamliu52/my-food-pal.git"
   },
   "keywords": [
     "node",
