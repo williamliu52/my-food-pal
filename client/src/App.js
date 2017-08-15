@@ -12,7 +12,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/api')
+    let params = {
+        'format': 'json',
+        'q': 'butter',
+        'sort': 'n',
+        'max': 10,
+        'offset': 0,
+        'api_key': 'DEMO_KEY'
+    };
+
+    fetch('/api/search', {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify(params)
+        // body: params
+    })
       .then(response => {
         if (!response.ok) {
           throw new Error(`status ${response.status}`);
