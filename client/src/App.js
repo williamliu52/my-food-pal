@@ -57,12 +57,13 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
+          {'Welcome to '}
+          <a target="new" href="https://github.com/williamliu52/my-food-pal">
+            {'MyFoodPal'}
           </a><br/>
         </p>
         <p className="App-intro">
+          {'Keyword: '}
           {this.state.fetching
             ? 'Fetching message from API'
             : this.state.message}

@@ -29,6 +29,10 @@ app.post('/api/search', function (req, res) {
     let searchURL = USDA_SEARCH + urlParams;
     request(searchURL, function(error, resp, body) {
         console.log(body);
+        let parsedBody = JSON.parse(body);
+        parsedBody.message = parsedBody.list.q;
+        res.set('Content-Type', 'application/json');
+        res.send(JSON.stringify(parsedBody));
     })
 });
 
