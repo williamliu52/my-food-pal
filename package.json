@@ -6,6 +6,7 @@
     "node": "6.11.x"
   },
   "scripts": {
+    "server": "node server",
     "start": "concurrently \"node server\" \"cd client && npm start\"",
     "debug": "concurrently \"node --inspect server\" \"cd client && npm start\"",
     "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
