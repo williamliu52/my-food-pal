@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FoodSearch from './FoodSearch';
 import logo from './logo.svg';
 import './App.css';
 
@@ -68,6 +69,7 @@ class App extends Component {
             ? 'Fetching message from API'
             : this.state.message}
         </p>
+        <FoodSearch />
       </div>
     );
   }
