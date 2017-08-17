@@ -1,19 +1,15 @@
 const USDA = {
     search: function(query, callback) {
-        let params = {
-            // 'api_key': process.env.USDA_API_KEY,
-            'api_key': 'DEMO_KEY',
-            'query': query,
-            'format': 'json'
+        let param = {
+            food: query
         };
-
         fetch('/api/search', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: 'post',
-            body: JSON.stringify(params)
+            body: JSON.stringify(param)
             // body: params
         }).then(resp => {
             if (!resp.ok) {

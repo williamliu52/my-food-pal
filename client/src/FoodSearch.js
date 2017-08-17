@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 import USDA from './USDA';
 
 class FoodSearch extends Component {
@@ -12,13 +13,13 @@ class FoodSearch extends Component {
     }
 
     // function to handle text being input into search box
-    handleQueryChange = (e) => {
+    handleQueryChange = function (e) {
         this.setState({
             query: e.target.value
         });
     };
 
-    handleSearch = (e) => {
+    handleSearch = function (e) {
         e.preventDefault();
         const text = this.state.query
         if (text) {
@@ -58,19 +59,17 @@ class FoodSearch extends Component {
 
         return (
             <div className='search'>
-                <form className='form-inline' onSubmit={this.handleSearch}>
-                    <div className='form-group searchBox'>
-                        <label for='foodSearchBox'>Search</label>
-                        <input
+                <form className='form-inline' onSubmit={this.handleSearch.bind(this)}>
+                    <FormGroup>
+                        <ControlLabel>Search</ControlLabel>
+                        <FormControl
                             type='text'
-                            className='form-control'
-                            id='foodSearchBox'
                             placeholder='Search for a food'
                             value={this.state.query}
-                            onChange={this.handleQueryChange}
+                            onChange={this.handleQueryChange.bind(this)}
                         />
-                    </div>
-                    <button type='submit' className='btn btn-default'>Search</button>
+                        <Button type='submit' className='btn btn-default'>Search</Button>
+                    </FormGroup>
                 </form>
                 <div className='center-block searchResults col-md-8 center-block'>
                     <table className="table table-hover table-bordered table-responsive">

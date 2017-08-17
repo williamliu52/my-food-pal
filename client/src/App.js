@@ -13,41 +13,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let params = {
-        'format': 'json',
-        'q': 'butter',
-        'sort': 'n',
-        'max': 10,
-        'offset': 0,
-        'api_key': 'DEMO_KEY'
-    };
-
-    fetch('/api/search', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: 'post',
-        body: JSON.stringify(params)
-        // body: params
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        this.setState({
-          message: json.message,
-          fetching: false
-        });
-      }).catch(e => {
-        this.setState({
-          message: `API call failed: ${e}`,
-          fetching: false
-        });
-      })
+    this.setState({
+      message: 'Hello',
+      fetching: false
+    });
   }
 
   render() {

@@ -23,12 +23,18 @@ app.get('/api', function (req, res) {
 
 // Use the USDA Search API to lookup foods based on keywords
 app.post('/api/search', function (req, res) {
-    let urlParams = Object.keys(req.body).map(val =>
-        encodeURIComponent(val) + '=' + encodeURIComponent(req.body[val])
+    let urlParams = {
+        'api_key': process.env.USDA_API_KEY,
+        'q': req.body.food,
+        'format': 'json'
+    }
+    // turn params object into a proper query string and create the URL
+    queryString = Object.keys(urlParams).map(val =>
+        encodeURIComponent(val) + '=' + encodeURIComponent(urlParams[val])
     ).join('&')
-    let searchURL = USDA_SEARCH + urlParams;
+    let searchURL = USDA_SEARCH + queryString;
+    // perform search and return result
     request(searchURL, function(error, resp, body) {
-        console.log(body);
         let parsedBody = JSON.parse(body);
         parsedBody.message = parsedBody.list.q;
         res.set('Content-Type', 'application/json');
