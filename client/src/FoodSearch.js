@@ -8,7 +8,8 @@ class FoodSearch extends Component {
         this.state = {
             foods: [],         // list of foods returned from search
             clearQuery: false, // button to clear search box
-            query: ""          // actual words in search box
+            query: "",         // actual words in search box
+            nutrients: {}      // food nutrients info
         };
     }
 
@@ -19,6 +20,7 @@ class FoodSearch extends Component {
         });
     }
 
+    // function to handle search button being clicked; calls USDA.search
     handleSearch = function (e) {
         e.preventDefault();
         const text = this.state.query
@@ -40,7 +42,7 @@ class FoodSearch extends Component {
     }
 
     // function to handle clear button being called
-    handleSearchCancel = () => {
+    handleSearchCancel = function () {
         this.setState({
             foods: [],
             clearQuery: false,
@@ -48,12 +50,27 @@ class FoodSearch extends Component {
         });
     };
 
+    // function to handle search button being clicked; calls USDA.report
+    handleReport = function (ndbno) {
+        if (ndbno) {
+            USDA.report(ndbno, results => {
+                this.setState({
+                    nutrients: results
+                });
+            });
+        }
+    }
+
     render() {
         // temp table holding foods until components are created
         const foodRows = this.state.foods.map((food, idx) => (
             <tr key={idx}>
                 <td>{food.name}</td>
-                <td>{food.group}</td>
+                <td>
+                    <Button onClick={() => this.handleReport(food.ndbno)}>
+                        Nutrition Info
+                    </Button>
+                </td>
             </tr>
         ));
 
@@ -74,8 +91,7 @@ class FoodSearch extends Component {
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Company</th>
+                                <th colSpan='2'>Food</th>
                             </tr>
                         </thead>
                         <tbody>

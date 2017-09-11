@@ -42,6 +42,27 @@ app.post('/api/search', function (req, res) {
     })
 });
 
+// Use the USDA Report API to get the nutrient of a specific food
+app.post('/api/report', function (req, res) {
+    let urlParams = {
+        'api_key': process.env.USDA_API_KEY,
+        'format': 'json',
+        'ndbno': req.body.ndbno,
+        'type': 'b'
+    }
+    // turn params object into a proper query string and create the URL
+    queryString = Object.keys(urlParams).map(val =>
+        encodeURIComponent(val) + '=' + encodeURIComponent(urlParams[val])
+    ).join('&')
+    let reportURL = USDA_REPORT + queryString;
+    // call API and return result
+    request(reportURL, function(error, resp, body) {
+        let parsedBody = JSON.parse(body);
+        res.set('Content-Type', 'application/json');
+        res.send(JSON.stringify(parsedBody));
+    });
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
