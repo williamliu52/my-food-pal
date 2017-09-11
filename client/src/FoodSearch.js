@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Button, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 import USDA from './USDA';
+import NutritionInfo from './NutritionInfo';
 
 class FoodSearch extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class FoodSearch extends Component {
             foods: [],         // list of foods returned from search
             clearQuery: false, // button to clear search box
             query: "",         // actual words in search box
-            nutrients: {}      // food nutrients info
+            nutrients: ""      // food nutrients info
         };
     }
 
@@ -87,11 +88,11 @@ class FoodSearch extends Component {
                     <Button type='submit' className='btn btn-default'>Search</Button>
                     </FormGroup>
                 </form>
-                <div className='center-block searchResults col-md-6 center-block'>
+                <div className='searchResults col-md-4 center-block'>
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
-                                <th colSpan='2'>Food</th>
+                                <th colSpan='2'>Results</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,6 +100,7 @@ class FoodSearch extends Component {
                         </tbody>
                     </table>
                 </div>
+                <NutritionInfo info={this.state.nutrients} />
             </div>
         )
     }
