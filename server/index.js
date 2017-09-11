@@ -26,7 +26,9 @@ app.post('/api/search', function (req, res) {
     let urlParams = {
         'api_key': process.env.USDA_API_KEY,
         'q': req.body.food,
-        'format': 'json'
+        'format': 'json',
+        'ds': 'Standard Reference',
+        'sort': 'r'
     }
     // turn params object into a proper query string and create the URL
     queryString = Object.keys(urlParams).map(val =>

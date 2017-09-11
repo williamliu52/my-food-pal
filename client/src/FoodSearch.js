@@ -65,8 +65,6 @@ class FoodSearch extends Component {
     }
 
     render() {
-        // temp table holding foods until components are created
-
         return (
             <div className='search'>
                 <form className='search-box form-inline' onSubmit={this.handleSearch.bind(this)}>
@@ -88,8 +86,6 @@ class FoodSearch extends Component {
             </div>
         )
     }
-
-
 }
 
 export default FoodSearch;
