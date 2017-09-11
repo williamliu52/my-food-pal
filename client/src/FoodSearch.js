@@ -6,9 +6,9 @@ class FoodSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            foods: [], // list of foods returned from search
+            foods: [],         // list of foods returned from search
             clearQuery: false, // button to clear search box
-            query: "" // actual words in search box
+            query: ""          // actual words in search box
         };
     }
 
@@ -17,7 +17,7 @@ class FoodSearch extends Component {
         this.setState({
             query: e.target.value
         });
-    };
+    }
 
     handleSearch = function (e) {
         e.preventDefault();
@@ -61,17 +61,16 @@ class FoodSearch extends Component {
             <div className='search'>
                 <form className='form-inline' onSubmit={this.handleSearch.bind(this)}>
                     <FormGroup>
-                        <ControlLabel>Search</ControlLabel>
                         <FormControl
                             type='text'
                             placeholder='Search for a food'
                             value={this.state.query}
                             onChange={this.handleQueryChange.bind(this)}
                         />
-                        <Button type='submit' className='btn btn-default'>Search</Button>
+                    <Button type='submit' className='btn btn-default'>Search</Button>
                     </FormGroup>
                 </form>
-                <div className='center-block searchResults col-md-8 center-block'>
+                <div className='center-block searchResults col-md-6 center-block'>
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>

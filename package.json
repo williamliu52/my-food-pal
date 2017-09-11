@@ -35,6 +35,9 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "eslint": "^4.6.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-react": "^7.3.0"
   }
 }
