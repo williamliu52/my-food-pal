@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {Button, FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
+import {Button, FormControl, FormGroup} from 'react-bootstrap';
 import USDA from './USDA';
 import NutritionInfo from './NutritionInfo';
+import FoodResults from './FoodResults';
+import './FoodSearch.css';
 
 class FoodSearch extends Component {
     constructor(props) {
@@ -64,20 +66,10 @@ class FoodSearch extends Component {
 
     render() {
         // temp table holding foods until components are created
-        const foodRows = this.state.foods.map((food, idx) => (
-            <tr key={idx}>
-                <td>{food.name}</td>
-                <td>
-                    <Button onClick={() => this.handleReport(food.ndbno)}>
-                        Nutrition Info
-                    </Button>
-                </td>
-            </tr>
-        ));
 
         return (
             <div className='search'>
-                <form className='form-inline' onSubmit={this.handleSearch.bind(this)}>
+                <form className='search-box form-inline' onSubmit={this.handleSearch.bind(this)}>
                     <FormGroup>
                         <FormControl
                             type='text'
@@ -88,18 +80,10 @@ class FoodSearch extends Component {
                     <Button type='submit' className='btn btn-default'>Search</Button>
                     </FormGroup>
                 </form>
-                <div className='searchResults col-md-4 center-block'>
-                    <table className="table table-hover table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <th colSpan='2'>Results</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {foodRows.slice(0,9)}
-                        </tbody>
-                    </table>
-                </div>
+                <FoodResults
+                    report={this.handleReport.bind(this)}
+                    foods={this.state.foods}
+                />
                 <NutritionInfo info={this.state.nutrients} />
             </div>
         )
