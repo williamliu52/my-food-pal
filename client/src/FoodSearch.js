@@ -67,7 +67,7 @@ class FoodSearch extends Component {
 
     render() {
         return (
-            <div className='search'>
+            <div className='search col-md-6'>
                 <form className='search-box form-inline' onSubmit={this.handleSearch.bind(this)}>
                     <FormGroup>
                         <FormControl

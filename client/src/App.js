@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import FoodSearch from './FoodSearch';
+import Diary from './Diary';
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,6 +29,7 @@ class App extends Component {
                         </a>
                     </h2>
                 </div>
+                <Diary />
                 <FoodSearch/>
             </div>
         );
