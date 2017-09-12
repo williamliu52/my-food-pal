@@ -36,14 +36,6 @@ class FoodResults extends Component {
         if (this.props.foods.length > 0) {
             return (
                 <div className='searchResults col-md-4 center-block'>
-                    <div>
-                        <Pagination
-                            bsSize='medium'
-                            items={Math.ceil(this.props.foods.length/10-1)}
-                            activePage={this.state.activePage}
-                            onSelect={this.handleSelect.bind(this)} />
-                        <br />
-                    </div>
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
@@ -54,6 +46,18 @@ class FoodResults extends Component {
                             {foodRows.slice(this.state.itemStart, this.state.itemEnd)}
                         </tbody>
                     </table>
+                    <div>
+                        <Pagination
+                            prev
+                            next
+                            ellipsis
+                            maxButtons={5}
+                            bsSize='medium'
+                            items={Math.ceil(this.props.foods.length/10-1)}
+                            activePage={this.state.activePage}
+                            onSelect={this.handleSelect.bind(this)} />
+                        <br />
+                    </div>
                 </div>
             )
         } else {
