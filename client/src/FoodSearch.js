@@ -30,7 +30,8 @@ class FoodSearch extends Component {
         if (text) {
             USDA.search(text, results => {
                 this.setState({
-                    foods: results
+                    foods: results,
+                    nutrients: ""
                 });
             });
 
@@ -75,7 +76,7 @@ class FoodSearch extends Component {
                             value={this.state.query}
                             onChange={this.handleQueryChange.bind(this)}
                         />
-                    <Button type='submit' className='btn btn-default'>Search</Button>
+                    <Button type='submit' className='search-btn btn btn-default'>Search</Button>
                     </FormGroup>
                 </form>
                 <FoodResults
