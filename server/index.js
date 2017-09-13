@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const request = require('request')
+const request = require('request');
+const db = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -65,6 +66,18 @@ app.post('/api/report', function (req, res) {
     });
 });
 
+// Database query
+app.get('/db', function (req, res) {
+    db.query('SELECT * FROM test;', (err, result) => {
+        res.send(result.rows[1]);
+    });
+    // Or, do this for non-query only statements
+    // db.getClient((err, client, done) => {
+    //     client.query('SELECT * FROM test;', (err, res) => {
+    //         done();
+    //     });
+    // });
+});
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
