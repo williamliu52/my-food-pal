@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 const MACROS = ["Energy", "Protein", "Total lipid (fat)",
-                "Carbohydrate, by difference", "Sodium, Na", "Sugars, total"];
+                "Carbohydrate, by difference", "Sodium, Na",
+                "Sugars, total", "Fiber, total dietary"];
 const MACRO_SET = new Set(MACROS);
 
 class NutritionInfo extends Component {
@@ -17,7 +18,7 @@ class NutritionInfo extends Component {
                 }
             });
             return (
-                <div className='col-md-2'>
+                <div className='col-md-4'>
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>

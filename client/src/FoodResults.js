@@ -35,7 +35,7 @@ class FoodResults extends Component {
 
         if (this.props.foods.length > 0) {
             return (
-                <div className='searchResults col-md-4 center-block'>
+                <div className='searchResults col-md-8 center-block'>
                     <table className="table table-hover table-bordered table-responsive">
                         <thead>
                             <tr>
