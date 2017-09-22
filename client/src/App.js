@@ -15,6 +15,7 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({message: 'Hello', fetching: false});
+        this.databaseQuery();
     }
 
     render() {
@@ -27,6 +28,7 @@ class App extends Component {
                         <a target="new" href="https://github.com/williamliu52/my-food-pal">
                             {'MyFoodPal'}
                         </a>
+                        {this.state.id}
                     </h2>
                 </div>
                 <Diary />

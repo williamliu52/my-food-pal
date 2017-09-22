@@ -78,6 +78,18 @@ app.get('/db', function (req, res) {
     //     });
     // });
 });
+
+// Get foods from database (TABLE diary) based on a date
+app.get('/db/getDiaryFoods/:date', function (req, res) {
+    let query = 'SELECT * FROM diary WHERE date=' + req.params.date;
+    db.query(query, (err, result) => {
+        if (!err) {
+            res.set('Content-Type', 'application/json');
+            res.send(JSON.stringify(result.rows));
+        }
+    });
+});
+
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
