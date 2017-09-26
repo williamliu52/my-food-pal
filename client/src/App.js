@@ -15,7 +15,6 @@ class App extends Component {
 
     componentDidMount() {
         this.setState({message: 'Hello', fetching: false});
-        this.databaseQuery();
     }
 
     render() {
